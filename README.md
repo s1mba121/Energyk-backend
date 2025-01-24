@@ -1,109 +1,109 @@
 # PowerBank Rental Backend
 
-## Описание проекта
+## Project Description
 
-Этот проект представляет собой серверную часть системы для управления автоматами аренды повербанков. Система разработана для улучшения моих навыков в веб-разработке. Она поддерживает управление пользователями, машинами (автоматами), заказами и промокодами.
+This project is the backend for a system that manages power bank rental machines. It was developed to enhance my web development skills. The system supports managing users, machines (rental stations), orders, and promo codes.
 
-Проект построен с использованием **Node.js**, **Express**, и **MongoDB**. Архитектура приложения RESTful, что обеспечивает простоту масштабирования и поддержку различных клиентов.
-
----
-
-## Стек технологий
-
-- **Node.js** - серверная платформа для реализации бизнес-логики.
-- **Express** - минималистичный фреймворк для создания REST API.
-- **MongoDB** - NoSQL база данных для хранения данных.
-- **dotenv** - для управления конфиденциальными переменными среды.
-- **cors** - для управления политикой доступа между различными источниками.
-- **Body-Parser** - для обработки входящих JSON запросов.
+The project is built using **Node.js**, **Express**, and **MongoDB**. The application follows a RESTful architecture, ensuring scalability and support for various clients.
 
 ---
 
-## Основной функционал
+## Technology Stack
 
-### 1. **Аутентификация и управление пользователями**
-
-Роуты:
-
-- `POST /api/auth/register` — Регистрация нового пользователя.
-- `POST /api/auth/verify` — Подтверждение пользователя.
-- `POST /api/auth/login` — Вход пользователя.
-- `PUT /api/auth/update/:id` — Обновление данных пользователя.
-- `DELETE /api/auth/delete/:id` — Удаление пользователя.
-- `GET /api/auth/all` — Получение списка всех пользователей.
-
-### 2. **Управление автоматами (машинами)**
-
-Роуты:
-
-- `POST /api/machines/add-machine` — Добавление новой машины.
-- `POST /api/machines/set-expectation` — Установка ожиданий на машину.
-- `POST /api/machines/respond-to-machine` — Ответ на запрос машины.
-- `GET /api/machines/all` — Получение списка всех машин.
-- `GET /api/machines/status/:kod` — Получение статуса машины.
-- `DELETE /api/machines/delete/:id` — Удаление машины.
-
-### 3. **Управление заказами**
-
-Роуты:
-
-- `GET /api/orders/active/:userId` — Получение активных заказов пользователя.
-- `GET /api/orders/completed/:userId` — Получение завершённых заказов пользователя.
-- `POST /api/orders/complete/:orderId` — Завершение заказа.
-
-### 4. **Управление промокодами**
-
-Роуты:
-
-- `POST /api/promoCodes/add` — Добавление нового промокода.
-- `GET /api/promoCodes` — Получение списка всех промокодов.
-
-### 5. **Дополнительные пользовательские данные**
-
-Роуты:
-
-- `GET /api/users/:userId` — Получение данных пользователя.
-- `PUT /api/users/:userId` — Редактирование данных пользователя.
-- `POST /api/users/redeem` — Активация промокода пользователем.
+- **Node.js** - A server-side platform for implementing business logic.
+- **Express** - A minimalist framework for building REST APIs.
+- **MongoDB** - A NoSQL database for storing data.
+- **dotenv** - For managing sensitive environment variables.
+- **cors** - For handling cross-origin access policies.
+- **Body-Parser** - For processing incoming JSON requests.
 
 ---
 
-## Установка и запуск
+## Key Features
 
-### 1. Установите зависимости:
+### 1. **Authentication and User Management**
+
+Routes:
+
+- `POST /api/auth/register` — Register a new user.
+- `POST /api/auth/verify` — Verify a user.
+- `POST /api/auth/login` — Log in a user.
+- `PUT /api/auth/update/:id` — Update user information.
+- `DELETE /api/auth/delete/:id` — Delete a user.
+- `GET /api/auth/all` — Retrieve a list of all users.
+
+### 2. **Machine Management**
+
+Routes:
+
+- `POST /api/machines/add-machine` — Add a new machine.
+- `POST /api/machines/set-expectation` — Set expectations for a machine.
+- `POST /api/machines/respond-to-machine` — Respond to a machine request.
+- `GET /api/machines/all` — Retrieve a list of all machines.
+- `GET /api/machines/status/:kod` — Get the status of a machine.
+- `DELETE /api/machines/delete/:id` — Remove a machine.
+
+### 3. **Order Management**
+
+Routes:
+
+- `GET /api/orders/active/:userId` — Get a user's active orders.
+- `GET /api/orders/completed/:userId` — Get a user's completed orders.
+- `POST /api/orders/complete/:orderId` — Complete an order.
+
+### 4. **Promo Code Management**
+
+Routes:
+
+- `POST /api/promoCodes/add` — Add a new promo code.
+- `GET /api/promoCodes` — Retrieve a list of all promo codes.
+
+### 5. **Additional User Data**
+
+Routes:
+
+- `GET /api/users/:userId` — Retrieve user information.
+- `PUT /api/users/:userId` — Edit user information.
+- `POST /api/users/redeem` — Redeem a promo code for a user.
+
+---
+
+## Installation and Launch
+
+### 1. Install Dependencies:
 
 ```bash
 npm install
 ```
 
-### 2. Настройте переменные окружения:
+### 2. Configure Environment Variables:
 
-Создайте файл `.env` и добавьте:
+Create a `.env` file and add:
 
 ```
-MONGO_URI=ваш_адрес_базы_данных
+MONGO_URI=your_database_address
 ```
 
-### 3. Запустите сервер:
+### 3. Start the Server:
 
 ```bash
 npm start
 ```
 
-Сервер будет запущен на `http://<ваш-IP>:4000`.
+The server will run on `http://<your-IP>:4000`.
 
 ---
 
-## Будущее развитие
+## Future Development
 
-- Подключение платежной системы.
-- Добавление логов активности.
-- Расширение функционала анализа данных.
-- Разработка фронтенда для взаимодействия с этим API.
+- Integrating a payment system.
+- Adding activity logging.
+- Expanding data analysis functionality.
+- Developing a frontend for interacting with this API.
 
 ---
 
-## Контакты
+## Contact
 
-Разработчик: **s1mba121**  
+Developer: **s1mba121**  
 GitHub: [Frontend](https://github.com/s1mba121/Energyk-frontend), [Backend](https://github.com/s1mba121/Energyk-backend)
