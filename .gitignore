@@ -1,0 +1,5 @@
+.env
+/node_modules
+postman.json
+postman2.json
+postman3.json
